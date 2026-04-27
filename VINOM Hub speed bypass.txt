@@ -1,4 +1,4 @@
--- leaked by script haven join for more sources https://discord.gg/xfwA9fNFMe
+-- leaked by script haven join for more sources https://discord.gg/fpb8A4pqU
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -54,12 +54,12 @@ if not CoreGui:FindFirstChild("HiddenUI") then
 	f.Name = "HiddenUI"
 	f.Parent = CoreGui
 end
-if CoreGui.HiddenUI:FindFirstChild("IceHub_SpeedBypass") then
-	CoreGui.HiddenUI.IceHub_SpeedBypass:Destroy()
+if CoreGui.HiddenUI:FindFirstChild("vinomhub_SpeedBypass") then
+	CoreGui.HiddenUI.vinomhub_SpeedBypass:Destroy()
 end
 
 local gui = Instance.new("ScreenGui")
-gui.Name = "IceHub_SpeedBypass"
+gui.Name = "vinomhub_SpeedBypass"
 gui.ResetOnSpawn = false
 gui.Parent = CoreGui.HiddenUI
 
@@ -73,6 +73,56 @@ main.ClipsDescendants = true
 main.Active = true
 main.Parent = gui
 
+-- خلفية فضية متدرجة
+local UIGradient = Instance.new("UIGradient")
+UIGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(180,180,180)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(220,220,220)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(150,150,150))
+}
+UIGradient.Rotation = 45
+UIGradient.Parent = Main -- حطها على الفريم الرئيسي
+
+-- حركة اللون (تدوير بسيط)
+task.spawn(function()
+	while true do
+		UIGradient.Rotation += 1
+		task.wait(0.03)
+	end
+end)
+
+-- لمعة بيضاء متحركة
+local Shine = Instance.new("Frame")
+Shine.Size = UDim2.new(0, 60, 1, 0)
+Shine.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Shine.BackgroundTransparency = 0.8
+Shine.BorderSizePixel = 0
+Shine.Parent = Main
+
+local ShineGradient = Instance.new("UIGradient")
+ShineGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255,255,255)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,255,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255,255,255))
+}
+ShineGradient.Transparency = NumberSequence.new{
+	NumberSequenceKeypoint.new(0,1),
+	NumberSequenceKeypoint.new(0.5,0.3),
+	NumberSequenceKeypoint.new(1,1)
+}
+ShineGradient.Parent = Shine
+
+-- تحريك اللمعة
+task.spawn(function()
+	while true do
+		Shine.Position = UDim2.new(-0.3,0,0,0)
+		for i = -0.3,1.3,0.02 do
+			Shine.Position = UDim2.new(i,0,0,0)
+			task.wait(0.01)
+		end
+	end
+end)
+
 Instance.new("UICorner", main).CornerRadius = UDim.new(0, 10)
 addAnimatedStroke(main, 2)
 
@@ -80,7 +130,7 @@ local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, -40, 0, 20)
 title.Position = UDim2.new(0, 10, 0, 5)
 title.BackgroundTransparency = 1
-title.Text = "Ice Hub"
+title.Text = "VINOM Hub"
 title.Font = Enum.Font.GothamBlack
 title.TextSize = 15
 title.TextColor3 = Color3.new(1, 1, 1)
