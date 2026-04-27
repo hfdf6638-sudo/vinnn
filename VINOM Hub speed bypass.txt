@@ -126,7 +126,7 @@ title.BackgroundTransparency = 1
 title.Text = "VINOM Hub"
 title.Font = Enum.Font.GothamBlack
 title.TextSize = 15
-title.TextColor3 = Color3.new(1, 1, 1)
+title.TextColor3 = Color3.fromRGB(200,200,200)
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.Parent = main
 
