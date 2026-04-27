@@ -136,6 +136,23 @@ titleGrad.Color = ColorSequence.new({
 	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,255,255)),
 	ColorSequenceKeypoint.new(1, Color3.fromRGB(160,160,160)),
 })
+titleGrad.Parent = title
+
+task.spawn(function()
+	while true do
+		for i = -1,1,0.02 do
+			titleGrad.Offset = Vector2.new(i,0)
+			task.wait(0.01)
+		end
+	end
+end)
+
+local titleGrad = Instance.new("UIGradient")
+titleGrad.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(160,160,160)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,255,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(160,160,160)),
+})
 titleGrad.Rotation = 0
 titleGrad.Parent = title
 
